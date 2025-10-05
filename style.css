@@ -213,11 +213,6 @@ section {
     transition: 0.4s;
 }
 
-section:hover {
-    scale: 1.04;
-    transition: 0.4s;
-}
-
 .section-title {
     font-size: 36px;
     font-weight: 800;
