@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kin — Yeni nesil programlama dili</title>
+  <meta name="description" content="Kin — Hızlı, güvenli, platform bağımsız. Geliştiriciler için tasarlandı." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <span>Kin Language</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#ozellikler">Özellikler</a>
+        <a href="#oyun-alani">Online Compiler</a>
+        <a href="#topluluk">Topluluk</a>
+        <a href="#belgeler">Belgeler</a>
+        <a class="btn" href="#indir">İndir</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h2 class="title">Kolay, İleri, Net.</h2>
+        <p class="sub">Kin ile tanışın;<br />Programlama mantığını öğrenmek daha önce hiç bu kadar kolay olmamıştı!</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#baslangic">Başla</a>
+          <a class="btn" href="#oyun-alani">Tarayıcıda Dene</a>
+        </div>
+      </div>
+      <div class="editor" aria-label="Kod editörü">
+        <div class="editor-top">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <pre><code id="kin-code"></code></pre>
+        <div id="error" class="error"></div>
+      </div>
+
+      <style>
+        .editor {
+          background: #1a1a1a;
+          border-radius: 10px;
+          width: 600px;
+          padding: 15px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, .4);
+          transition: 0.4s;
+        }
+
+        .editor:hover {
+          scale: 1.1;
+          transition: 0.4s;
+        }
+
+        .editor-top {
+          display: flex;
+          gap: 6px;
+          margin-bottom: 10px;
+        }
+
+        .dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          display: inline-block;
+        }
+
+        .red {
+          background: #ff5f56;
+        }
+
+        .yellow {
+          background: #ffbd2e;
+        }
+
+        .green {
+          background: #27c93f;
+        }
+
+        .error {
+          color: #ff5f56;
+          margin-top: 10px;
+          font-size: 14px;
+          font-family: 'Inter', sans-serif;
+          opacity: 0;
+          transition: .4s;
+        }
+
+        .cursor {
+          display: none;
+          width: 7px;
+          background: #fff;
+          vertical-align: bottom;
+        }
+      </style>
+
+      <script>
+        const codeEl = document.getElementById("kin-code");
+        const errorEl = document.getElementById("error");
+
+        const code = [
+          `<span class="kw">metin</span> isim <span class="kw">=</span> <span class="str">"Kin"</span>;`,
+          `<span class="fn">yazdir</span>(<span class="str">"Merhaba, "</span> <span class="kw">+</span> isim);`,
+          `<span class="kw">tam</span> seferler = <span class="kw">0</span>;`,
+          `<span class="kw">dongu</span>(10) {`,
+          `  <span class="fn">yazdir</span>(<span class="str">"10 kere tekrar edicek. " + seferler</span>);`,
+          `  seferler <span class="kw">+=</span> <span class="kw">1</span>;`,
+          `}`
+        ];
+
+        let lineIndex = 0;
+        let charIndex = 0;
+        let currentLine = '';
+        let isErrorShown = false;
+
+        function typeLine() {
+          if (lineIndex < code.length) {
+            const fullLine = code[lineIndex];
+            if (charIndex < fullLine.length) {
+              currentLine += fullLine[charIndex++];
+              codeEl.innerHTML = code.slice(0, lineIndex).join('\n') + '\n' + currentLine + '<span class="cursor"></span>';
+              setTimeout(typeLine, 10);
+            } else if (fullLine != '}') {
+              codeEl.innerHTML = code.slice(0, lineIndex + 1).join('\n') + '<span class="cursor"></span>';
+              charIndex = 0;
+              currentLine = '';
+              if (lineIndex === 1 && !isErrorShown) {
+                isErrorShown = true;
+                setTimeout(() => {
+                  errorEl.textContent = "Hata: Satır 2'de ';' unutuldu.";
+                  errorEl.style.opacity = 1;
+                  setTimeout(() => {
+                    errorEl.style.opacity = 0;
+                    lineIndex++;
+                    setTimeout(typeLine, 700);
+                  }, 1500);
+                }, 400);
+              } else {
+                lineIndex++;
+                setTimeout(typeLine, 150);
+              }
+            }
+          }
+        }
+        typeLine();
+      </script>
+
+    </div>
+    </div>
+  </header>
+
+  <section id="ozellikler">
+    <div class="container">
+      <h2 class="section-title">Özellikler</h2>
+      <p class="section-sub">Basit sözdizimi, yüksek performans ve bellek güvenliği ile üretkenliği arttırır.</p>
+      <div class="features">
+        <article class="card">
+          <div class="icon">⚡</div>
+          <h4>Yüksek Performans</h4>
+          <p>Kodu hızlı derler, daha hızlı çalıştırır.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🛡️</div>
+          <h4>Bellek Güvenliği</h4>
+          <p>Segmentasyon hatalarını tarihe gömer.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🖥️</div>
+          <h4>Platform Bağımsız</h4>
+          <p>Windows, macOS ve Linux'ta çalışır.</p>
+        </article>
+        <article class="card">
+          <div class="icon">✨</div>
+          <h4>Basit Sözdizimi</h4>
+          <p>Öğrenmesi kolay, okuması rahattır.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="oyun-alani">
+    <div class="container">
+      <h2 class="section-title">Canlı Debug</h2>
+      <p class="section-sub">Kin kodunu tarayıcında hemen çalıştır ve dene.</p>
+      <div class="play-grid">
+        <div class="card">
+          <h4 style="margin:0 0 10px">Açıklama</h4>
+          <p class="section-sub" style="margin:0">Editördeki örnek kodu çalıştır'a basınca aşağıdaki çıktı alanında
+            sonuç görünür (örnek simülasyon).</p>
+        </div>
+        <div class="editor" id="play-editor">
+          <div class="editor-top">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <pre contenteditable="false" spellcheck="false"><code># Bu bir yorum satırıdır, çalıştırılmaz.
+
+tam round = 0
+
+eger(round == 0) ise {
+  yazdir("round 0'a eşit.");
+}
+
+round += 1;
+
+yazdir("round değeri değişti: " + round);</code></pre>
+          <div class="run-wrap">
+            <button class="btn btn-primary" id="run">Çalıştır</button>
+          </div>
+          <div class="output" id="output" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="belgeler">
+    <div class="container">
+      <h2 class="section-title">Hızlı Bağlantılar</h2>
+      <div class="features" style="grid-template-columns:repeat(3,1fr)">
+        <a class="card" href="#baslangic">
+          <h4>Başlangıç Kılavuzu</h4>
+          <p>İlk projenizi dakikalar içinde kurun.</p>
+        </a>
+        <a class="card" href="#kurulum">
+          <h4>Kurulum Rehberi</h4>
+          <p>Windows, macOS ve Linux için adımlar.</p>
+        </a>
+        <a class="card" href="#api">
+          <h4>API Referansı</h4>
+          <p>Standart kütüphane ve dil özellikleri.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <strong style="display:block;color:var(--text)">Kin</strong>
+          <small style="color:var(--muted)">© 2025 Echoza Interactive, tüm hakları saklıdır.</small>
+        </div>
+      </div>
+      <div style="display:flex;gap:22px;color:var(--muted)">
+        <a href="#">Gizlilik</a>
+        <a href="#">Şartlar</a>
+        <a href="#">Sürüm Notları</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY > 10;
+      nav.style.boxShadow = scrolled ? '0 6px 24px rgba(0,0,0,.35)' : 'none';
+      nav.style.background = scrolled ? 'rgba(11,15,20,.65)' : 'transparent';
+      nav.style.borderBottomColor = scrolled ? 'rgba(255,255,255,.08)' : 'rgba(255,255,255,.06)';
+    });
+
+    window.onload = function () {
+      //alert("Merhaba, Sitemizdeki İndir bölümünün bir işlevi yoktur, dilin kendisi açık bir şekilde henüz bitirilmemiştir. Özel olarak testleri yapılmakta.");
+    };
+
+    const runBtn = document.getElementById('run');
+    const out = document.getElementById('output');
+    const editorPre = document.querySelector('#play-editor pre');
+
+    runBtn.addEventListener('click', () => {
+      const code = editorPre.innerText.trim();
+      out.textContent = "round 0'a eşit." + "\n" + "round değeri değişti: 1";
+      runBtn.blur();
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id.length > 1) {
+          e.preventDefault();
+          const el = document.querySelector(id);
+          if (el) {
+            window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
+          }
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>
