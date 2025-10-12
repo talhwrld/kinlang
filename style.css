@@ -1,13 +1,22 @@
-/* Genel Ayarlar ve Dark Mode */
+/* Genel Ayarlar ve Reset */
 :root {
-    --color-background: #0d0d18; /* Çok Koyu Mavi/Siyah */
-    --color-primary-accent: #ff7f00; /* Parlak Turuncu CTA */
-    --color-secondary-accent: #39ff14; /* Neon Yeşil Vurgu */
-    --color-text-light: #e0e0e0;
-    --color-card-bg-transparent: rgba(255, 255, 255, 0.08); /* Glass Arka Plan */
-    --color-code-bg: #1a1a2e; /* Kod Bloğu Arka Planı */
-    --color-code-text: #f0f0f0;
-    --font-family: 'Inter', sans-serif; /* Gerçekte import edilmeli */
+    --color-dark-bg: #0A031A; /* Koyu Mor/Siyah Arkaplan */
+    --color-primary: #A855F7; /* Parlak Mor Vurgu */
+    --color-text-light: #FFFFFF;
+    --color-text-grey: #D1D5DB;
+    --font-main: 'Inter', sans-serif;
+    --max-width: 1200px;
+}
+
+@keyframes appear {
+    from {
+        scale: 0.4;
+        opacity: 0;
+    }
+    to {
+        scale: 1;
+        opacity: 1;
+    }
 }
 
 * {
@@ -17,460 +26,374 @@
 }
 
 body {
-    font-family: var(--font-family);
+    font-family: var(--font-main);
+    color: var(--color-text-light);
+    background-color: var(--color-dark-bg);
     line-height: 1.6;
-    color: var(--color-text-light);
-    background-color: var(--color-background);
-    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-.navbar, .hero, .features, .philosophy, .community, .footer {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Arka Plan Küreleri (Dinamik Etki) */
-.background-sphere {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(150px);
-    opacity: 0.4;
-    z-index: -1;
-}
-
-.bg-1 {
-    width: 400px;
-    height: 400px;
-    background: var(--color-secondary-accent);
-    top: -100px;
-    left: -100px;
-}
-
-.bg-2 {
-    width: 300px;
-    height: 300px;
-    background: var(--color-primary-accent);
-    bottom: 5%;
-    right: 5%;
-}
-
-/* Glassmorphism Efekti */
-.glass-effect {
-    background: var(--color-card-bg-transparent);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-}
-
-/* Navigasyon Stilleri */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    margin-top: 20px;
-}
-
-.logo {
-    font-size: 2rem;
-    font-weight: 900;
-    color: var(--color-text-light);
-}
-
-.navbar nav a {
+a {
+    color: var(--color-primary);
     text-decoration: none;
-    color: var(--color-text-light);
-    margin-left: 20px;
-    font-weight: 500;
     transition: color 0.3s;
 }
 
-.navbar nav a:hover {
-    color: var(--color-secondary-accent);
+.ngga {
+    position: absolute;
+    animation: appear 5s ease-in-out;
+    animation-timeline: view();
+    animation-range: entry 0;
 }
 
-/* Buton Stilleri */
-.btn-cta, .btn-link {
-    display: inline-block;
-    padding: 12px 25px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: background-color 0.3s, transform 0.2s;
-    text-align: center;
+a:hover {
+    color: var(--color-text-light);
 }
 
-.btn-cta {
-    background-color: var(--color-primary-accent);
-    color: var(--color-background);
-    border: 2px solid var(--color-primary-accent);
-    margin-left: 15px;
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.btn-cta:hover {
-    background-color: #ff9933;
-    transform: translateY(-2px);
+/* --- Header & Navigation --- */
+.header {
+    background-color: rgba(10, 3, 26, 0.95); /* Hafif şeffaflık */
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.1);
 }
 
-.btn-link {
-    background: none;
-    color: var(--color-secondary-accent);
-    padding: 0;
-    margin-left: 20px;
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.btn-link:hover {
-    text-decoration: underline;
-}
-
-/* Kahraman (Hero) Bölümü */
-.hero {
+.logo {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 100px 20px;
-    gap: 60px;
+    font-size: 24px;
+    font-weight: 800;
 }
 
-.hero-content {
-    max-width: 50%;
+.logo-icon {
+    background-color: var(--color-primary);
+    color: var(--color-dark-bg);
+    border-radius: 6px;
+    padding: 2px 7px;
+    margin-right: 5px;
+    line-height: 1;
 }
 
-.hero h1 {
-    font-size: 4.5rem;
-    font-weight: 900;
+.logo-text {
+    font-size: 12px;
+    font-weight:normal;
+}
+
+.nav a {
+    margin-left: 30px;
+    color: var(--color-text-light);
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.nav a:hover {
+    opacity: 1;
+    color: var(--color-primary);
+}
+
+/* --- Call To Action Buttons --- */
+.cta-button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.primary-cta {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border: 2px solid var(--color-primary);
+}
+
+.primary-cta:hover {
+    background-color: #9333ea;
+    border-color: #9333ea;
+}
+
+.secondary-cta {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.secondary-cta:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+/* --- 1. Hero Section --- */
+.hero-section {
+    text-align: center;
+    padding: 120px 0 60px;
+    background: radial-gradient(circle at center top, rgba(168, 85, 247, 0.1) 0%, rgba(10, 3, 26, 1) 70%);
+}
+
+.pre-header {
+    color: var(--color-text-grey);
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.main-title {
+    font-size: 68px;
+    font-weight: 800;
     margin-bottom: 20px;
     line-height: 1.1;
 }
 
-.hero h1 strong {
-    color: var(--color-secondary-accent);
-    text-shadow: 0 0 10px rgba(57, 255, 20, 0.5); /* Neon Etkisi */
+.highlight {
+    color: var(--color-primary);
 }
 
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-    color: #b0b0b0;
+.subtitle {
+    font-size: 18px;
+    color: var(--color-text-grey);
+    max-width: 700px;
+    margin: 0 auto 40px;
 }
 
-/* Kod Bloğu Gösterimi */
-.code-showcase {
-    /* Glass Effect kullanılıyor */
-    padding: 25px;
-    width: 50%;
-    min-width: 400px;
+.hero-actions .action-btn {
+    margin: 0 10px;
 }
 
-.terminal-bar {
-    background-color: rgba(255, 255, 255, 0.05);
-    color: #aaa;
-    padding: 10px 15px;
-    font-family: monospace;
-    font-size: 0.9rem;
-    border-radius: 8px 8px 0 0;
-    margin: -25px -25px 20px -25px; /* Kutuya oturması için */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+.arrow-icon, .doc-icon {
+    font-size: 18px;
 }
 
-.code-block {
-    font-family: 'Fira Code', monospace;
-    font-size: 1rem;
-    color: var(--color-code-text);
-    white-space: pre;
-    overflow-x: auto;
+.separator {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    margin-top: 60px;
 }
 
-/* Kod Sözdizimi Vurgulama */
-.keyword { color: #f1fa8c; font-weight: bold; }
-.func-name { color: #50fa7b; } 
-.type { color: #8be9fd; }
-.string { color: #ff79c6; }
-.func-call { color: #ffb86c; }
-.comment { color: #6272a4; }
-
-/* Özellikler Bölümü */
-.features {
-    padding: 100px 20px;
+/* --- 2. Why Choose Kin Section --- */
+.why-choose-section {
+    padding: 80px 0;
     text-align: center;
 }
 
-.features h2 {
-    font-size: 3rem;
+.why-choose-content h2 {
+    font-size: 40px;
+    font-weight: 800;
     margin-bottom: 50px;
 }
 
-.features h2 strong {
-    color: var(--color-primary-accent);
+.core-values {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.value-text {
+    flex-basis: 25%;
+}
+
+.simple-fast-safe {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--color-primary);
+}
+
+.experience-elegance {
+    color: var(--color-text-grey);
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.feature-list {
+    flex-basis: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.feature-item h3 {
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.feature-item p {
+    color: var(--color-text-grey);
+}
+
+.feature-icon {
+    font-size: 30px;
+    display: inline-block;
+    color: var(--color-primary);
+}
+
+.code-preview {
+    flex-basis: 40%;
+    background-color: #1a1a2e;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border: 1px solid #333;
+}
+
+.code-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #333;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.red { background-color: #ff5f56; }
+.yellow { background-color: #ffbd2e; }
+.green { background-color: #27c93f; }
+
+.file-name {
+    color: #aaa;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.kin-code {
+    display: block;
+    padding: 15px;
+    font-family: 'Fira Code', 'SF Mono', monospace;
+    font-size: 14px;
+    color: #f8f8f2;
+    white-space: pre-wrap;
+    background-color: #1a1a2e;
+}
+.kin-code .comment { color: #6272a4; }
+.kin-code .keyword { color: #ff79c6; font-weight: 600;}
+.kin-code .string { color: #f1fa8c; }
+.kin-code .method { color: #ffbd2e; font-weight: 600;}
+.kin-code .paranthese { color: #f8f8f2;}
+
+.why-actions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* --- 3. Features Section (Grid) --- */
+.section {
+    padding: 80px 0;
+}
+
+.features-section h2, .examples-section h2 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 50px;
+    color: var(--color-primary);
 }
 
 .feature-grid {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-}
-
-.feature-card {
-    /* Glass Effect kullanılıyor */
-    padding: 40px 20px;
-    text-align: center;
-    flex: 1;
-    transition: transform 0.3s, box-shadow 0.3s;
-    max-width: 350px;
-}
-
-.feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-}
-
-.feature-card .icon {
-    font-size: 3.5rem;
-    display: block;
-    margin-bottom: 15px;
-}
-
-.feature-card h3 {
-    font-size: 1.6rem;
-    margin-bottom: 10px;
-    color: var(--color-text-light);
-}
-.neon-green {
-    color: var(--color-secondary-accent);
-    text-shadow: 0 0 10px rgba(57, 255, 20, 0.6);
-}
-
-/* Felsefe (Vizyon) Bölümü */
-.philosophy {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    padding: 80px 20px;
-    background-color: #1a1a2e; /* Hafif koyu arkaplan */
-    border-radius: 15px;
-    margin-top: 50px;
-}
-
-.philosophy-text {
-    flex: 1;
-}
-
-.philosophy h2 {
-    font-size: 3rem;
-    color: var(--color-primary-accent);
-    margin-bottom: 20px;
-}
-.philosophy h2 strong {
-    color: var(--color-secondary-accent);
-}
-
-.philosophy-text p {
-    font-size: 1.1rem;
-    color: #b0b0b0;
-    margin-bottom: 30px;
-}
-
-.philosophy-visual {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.abstract-shape {
-    width: 250px;
-    height: 250px;
-    background: linear-gradient(135deg, var(--color-primary-accent), var(--color-secondary-accent));
-    transform: rotate(45deg);
-    border-radius: 50px;
-    opacity: 0.8;
-}
-
-/* Topluluk Bölümü */
-.community {
-    padding: 100px 20px;
-    text-align: center;
-}
-
-.community h2 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    color: var(--color-text-light);
-}
-
-.community p {
-    font-size: 1.1rem;
-    margin-bottom: 40px;
-    color: #aaa;
-}
-
-/* Footer */
-.footer {
-    padding: 30px;
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: #777;
-    font-size: 0.9rem;
-}
-
-/* Mobil Uyum (Responsive) Ayarlar */
-@media (max-width: 1024px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 50px;
-    }
-    .hero-content, .code-showcase, .philosophy, .philosophy-text, .philosophy-visual {
-        max-width: 100%;
-        width: 100%;
-        margin-bottom: 30px;
-    }
-    .hero h1 {
-        font-size: 3rem;
-    }
-    .philosophy {
-        flex-direction: column;
-        text-align: center;
-    }
-    .philosophy-visual {
-        order: -1; /* Görseli üste taşı */
-        margin-bottom: 40px;
-    }
-    .feature-grid {
-        flex-direction: column;
-    }
-    .navbar nav {
-        display: none; /* Mobil menü için hamburger ikonu gerekir */
-    }
-}
-
-/* ... (Önceki CSS kodunun tamamı buraya gelecek) ... */
-
-/* Yeni Bölümler İçin Ek CSS Stilleri */
-
-/* 3. GELİŞTİRİCİ ARAÇLARI BÖLÜMÜ */
-.tools {
-    padding: 100px 20px;
-    text-align: center;
-    background-color: #1a1a2e; /* Hafif koyu arkaplan */
-}
-
-.tools h2 {
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-    color: var(--color-text-light);
-}
-
-.tool-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
-.tool-item {
-    padding: 20px;
-    text-align: center;
-    border-left: 3px solid var(--color-secondary-accent);
-    background-color: var(--color-code-bg);
-    border-radius: 8px;
-    transition: background-color 0.3s;
-}
-
-.tool-item:hover {
-    background-color: #24243d;
-}
-
-.tool-icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 10px;
-}
-
-.tool-item h3 {
-    font-size: 1.3rem;
-    color: var(--color-primary-accent);
-    margin-bottom: 5px;
-}
-
-.tool-item p {
-    color: #b0b0b0;
-    font-size: 0.95rem;
-}
-
-/* 4. KULLANIM ALANLARI BÖLÜMÜ */
-.use-cases {
-    padding: 100px 20px;
-    text-align: center;
-}
-
-.use-cases h2 {
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-    color: var(--color-text-light);
-}
-
-.case-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.case-card {
-    /* Glass Effect kullanılıyor */
+.grid-item {
+    background-color: #180d30;
     padding: 30px;
-    flex: 1;
-    text-align: center;
-    transition: box-shadow 0.3s;
+    border-radius: 10px;
+    border-left: 4px solid var(--color-primary);
 }
 
-.case-card:hover {
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
-}
-
-.case-icon {
-    font-size: 3rem;
-    display: block;
+.grid-item h3 {
+    font-size: 24px;
     margin-bottom: 15px;
-    color: var(--color-secondary-accent);
+    font-weight: 700;
 }
 
-.case-card h4 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+.grid-item p {
+    color: var(--color-text-grey);
 }
 
-.case-card h4 strong {
-    color: var(--color-primary-accent);
+/* --- 4. Examples Section (Cards) --- */
+.examples-section {
+    background-color: #14092b; /* Hafif farklı arka plan */
 }
 
-.case-card p {
-    color: #b0b0b0;
+.use-case-cards {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
 }
 
-.logo {
-    display: inline-block;
-    width: 55px;
-    border-radius: 20px;
-    font-size: 16px;
+.card {
+    flex-basis: 30%;
+    background-color: #221440;
+    padding: 40px 30px;
+    border-radius: 10px;
+    text-align: center;
+    border-bottom: 5px solid var(--color-primary);
+    transition: transform 0.3s;
 }
 
-/* Mobil Uyum (Responsive) Ayarları - Güncelleme */
-@media (max-width: 900px) {
-    /* ... (Önceki responsive ayarlar) ... */
-
-    .tool-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .case-grid {
-        flex-direction: column;
-    }
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(168, 85, 247, 0.2);
 }
-@media (max-width: 600px) {
-    .tool-grid {
-        grid-template-columns: 1fr;
-    }
+
+.card h3 {
+    color: var(--color-primary);
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: var(--color-text-grey);
+}
+
+/* --- Footer --- */
+.footer {
+    padding: 25px 0;
+    background-color: #060113;
+    border-top: 1px solid rgba(168, 85, 247, 0.1);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.footer-links a {
+    margin-left: 20px;
+    color: var(--color-text-grey);
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
 }

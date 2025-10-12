@@ -1,138 +1,145 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kin | Geleceğin Programlama Dili</title>
+    <title>Kin - Türkçe Programlama Dili</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <div class="background-sphere bg-1"></div>
-    <div class="background-sphere bg-2"></div>
-
-    <header class="navbar glass-effect">
-        <div class="logo">
-            <img src="logo.png" class="logo" alt="">
-
-            <h1
-                style="display: inline-block; font-family: Arial, Helvetica, sans-serif; position: absolute; margin-left: 10px; margin-top: 3px;">
-                Kin</h1>
+    <header class="header">
+        <div class="container nav-content">
+            <div class="logo">
+                <span class="logo-icon">K</span><span>Kin</span>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link">Ana Sayfa</a>
+                <a href="#features" class="nav-link">Özellikler</a>
+                <a href="#examples" class="nav-link">Alt Yapı</a>
+                <a href="#community" class="nav-link">Topluluk</a>
+            </nav>
+            <a href="#" class="cta-button primary-cta">İndir</a>
         </div>
-        <nav>
-            <a href="#ozellikler">Özellikler</a>
-            <a href="#vizyon">Vizyon</a>
-            <a href="#topluluk" class="btn-primary">Topluluk</a>
-            <a href="#" class="btn-cta">İndir</a>
-        </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Kolay, İleri, Net.</h1>
-            <p>Temel olarak kolaylık ve syntax için tasarlanmış, tamamen türkçe olan <span
-                    class="keyword">programlama</span> dili <span class="keyword">Kin</span> ile tanışın!</p>
-            <p></p>
+    <section id="home" class="hero-section">
+        <div class="container hero-content">
+            <p class="pre-header">Hızlı ve Kaliteli</p>
+            <h1 class="main-title">Geleceği <span class="highlight">${Kin}</span> ile kodla.</h1>
+            <p class="subtitle">Tamamen türkçe, kullanımı kolay, kullanıcı dostu programla dili, Kin ile şimdi neler yapabileceğini keşfet!</p>
             <div class="hero-actions">
-                <a href="#kullanim_alanlari" class="btn-cta">Hemen Başla</a>
-                <a href="https://github.com/tlhcodee/Kin" class="btn-link">GitHub'da Keşfet &rarr;</a>
+                <a href="#" class="cta-button primary-cta action-btn">Hemen başla <span class="arrow-icon">→</span></a>
+                <a href="#" class="cta-button secondary-cta action-btn">Örneklere göz at <span class="doc-icon">☐</span></a>
             </div>
         </div>
-        <div class="code-showcase glass-effect">
-            <pre class="code-block">
-<span class="comment"># Bu bir yorum satırıdır, okunmaz.</span>
-<span class="keyword">tam</span> degisken1 = <span class="keyword">15</span> 
-<span class="comment"># degisken1 tam sayısı 15 olarak belirlendi</span>
-
-<span class="keyword">döngü<span class="comment">(</span><span class="string">15</span><span class="comment">) {</span></span> <span class="comment"># 15 kere tekrar etsin.</span>
-    <span class="func-call">yazdır<span class="comment">(<span class="keyword">15</span><span class="comment">)</span></span></span>
-    <span class="func-call">bilgileri_aktar()</span> <span class="comment"># fonksiyonu çağırıyoruz.</span>
-<span class="comment">}</span>
-
-<span class="comment"># Basit bir kin fonksiyonu.</span>
-<span class="keyword">fonksiyon</span> <span class="func-name">bilgileri_aktar<span class="func-call">()</span></span> {
-    <span class="func-call">yazdır<span class="comment">(<span class="string">"Bu bir fonksiyondur. " <span class="keyword"> + degisken1</span></span><span class="comment">)</span></span></span>
-}
-
-            </pre>
-            <div class="terminal-bar">Kin Terminali</div>
-        </div>
+        <div class="separator"></div>
     </section>
 
-    <section id="ozellikler" class="features">
-        <h2>Neden Kin?</h2>
-        <div class="feature-grid">
-            <div class="feature-card glass-effect">
-                <span class="icon neon-green">⚡</span>
-                <h3>Düşük Kullanım</h3>
-                <p>Kin kodu, çalışırken optimize bir şekilde çalışır ve düşük kullanım yapar. bu sayede cihazlarda donma, takılma gibi sorunlar yaratmaz.</p>
-            </div>
-            <div class="feature-card glass-effect">
-                <span class="icon neon-green">🧠</span>
-                <h3>Topluluk Yönetimi</h3>
-                <p>Kin'in gelişim sürecine siz'de katkıda bulunabilirsiniz! Github repomuz üzerinden kendi değişiklikleriniz için bizlere commit sağlayabilirsiniz.</p>
-            </div>
-            <div class="feature-card glass-effect">
-                <span class="icon neon-green">💻</span>
-                <h3>UI/Arayüz Desteği</h3>
-                <p>Kin kendi içerisinde Frame oluşturma, ve input event barındırır. bu sayede mini 2D grafikler veya oyunlar ortaya çıkartabilirsiniz.</p>
-            </div>
-        </div>
-    </section>
+    <section id="why-choose-kin" class="why-choose-section">
+        <div class="container why-choose-content">
+            <h2>Kin'i neden seçmelisin?</h2>
+            <div class="core-values">
+                <div class="value-text">
+                    <p class="simple-fast-safe">Kolay, İleri, Net.</p>
+                    <p class="experience-elegance">İşte, Kin tam olarak bu!</p>
+                </div>
 
-    <section id="araclar" class="tools">
-        <h2>Entegre ve Mükemmel Geliştirici Deneyimi</h2>
-        <div class="tool-grid">
-            <div class="tool-item">
-                <span class="tool-icon">🛠️</span>
-                <h3>Dahili Test Çatısı</h3>
-                <p>Kodunuzu doğrudan derleyiciden çalıştırın. Hızlı ve güvenilir bir test ortamı.</p>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <span class="feature-icon lightning-icon">⚡</span>
+                        <h3>Mükemmel Performans</h3>
+                        <p>Kin derleyicisi saniyeler içerisinde syntaxlerinizi dönüştürür ve işleme koyar, yük bindirmez, hızlı çalışır.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon shield-icon">🛡️</span>
+                        <h3>Güvenlik Duvarı</h3>
+                        <p>Yazılan Kin kodunuz otomatik olarak derleme işleminde gizlenir (obfuscation) ve herhangi birinin kodunuzu izinsiz kullanmasını engeller.</p>
+                    </div>
+                </div>
+
+                <div class="code-preview">
+                    <div class="code-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="file-name">/kaynak/merhaba-dunya.kin</span>
+                    </div>
+                    <pre>
+<code class="kin-code">1  <span class="comment"># Bu bir yorum satırıdır.</span>
+2  <span class="keyword">tam <span class="paranthese">deneme = <span class="keyword">15</span></span></span>
+2  <span class="keyword">tam <span class="paranthese">deneme2 = <span class="keyword">25</span></span></span>
+2  <span class="keyword">tam <span class="paranthese">sonuc = <span class="keyword">deneme <span class="paranthese">+</span> deneme2</span></span></span>
+   <span class="method">döngü(<span class="paranthese">15</span>) <span class="paranthese">{</span></span>
+       <span class="string">yazdır(<span class="paranthese">sonuc</span>)</span> 
+       <span class="comment"># sonuc, deneme ve deneme2'nin toplamı.</span>
+       <span class="comment"># toplam, 15 defa ekrana bastırıldı.</span>
+   <span class="paranthese">}</span>
+</code></pre>
+                </div>
             </div>
-            <div class="tool-item">
-                <span class="tool-icon">📚</span>
-                <h3>Editör Altyapısı</h3>
-                <p>Kin'in kendi içerisinde barındırdığı IDE ile projelerinize yeni bir soluk katın.</p>
-            </div>
-            <div class="tool-item">
-                <span class="tool-icon">💡</span>
-                <h3>Gelişmiş Hata Ayıklama</h3>
-                <p>Anlaşılır hata mesajları ve yerleşik hata ayıklama (debugging) desteği.</p>
-            </div>
-            <div class="tool-item">
-                <span class="tool-icon">🎨</span>
-                <h3>Kod Biçimlendirme</h3>
-                <p>Geliştirdiğimiz IDE sayesinde; Otomatik kod tamamlama, Syntax highlighting ve bir çoğu diğer özelliğe tanık olun!</p>
+
+            <div class="why-actions">
+                <a href="#" class="cta-button primary-cta join-discord-btn">Topluluğumuza katıl!</a>
             </div>
         </div>
     </section>
 
-    <section id="vizyon" class="philosophy">
-        <div class="philosophy-text">
-            <h2>Kin Hakkında</h2>
-            <p>Kin'in derleyici gücü, tip ve bellek hatalarını kodunuzu çalıştırmadan önce tespit eder. Bu, geliştirme
-                hızınızı ve uygulamanızın güvenilirliğini kökten değiştirir.</p>
-            <p>Kin'in asıl kullanım amacı programlama öğrenmek isteyen ve bu alanda yeni olan geliştiricilerin mantığı kolay ve türkçe syntax üzerinden anlamasıdır.</p>   
-        </div>
-        <div class="philosophy-visual">
-            <div class="abstract-shape"></div>
+    <section id="features" class="section features-section">
+        <div class="container">
+            <h2>Kin'in Güçlü Özellikleri</h2>
+            <div class="feature-grid">
+                <div class="grid-item">
+                    <h3>Tamamen Türkçe</h3>
+                    <p>Türkçe söz dizimi sayesinde Kin, kullanıcı dostu bir programlama dili olarak öne çıkıyor. Programlamaya yeni başlayan kişilerin işini kolaylaştırıyor.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Geliştirme Süreci</h3>
+                    <p>Kin düzenli güncellemeler alan ve her güncelleme ile yeni özellikler getiren bir dildir. Kullanıcılarımızın raporlarına ve isteklerine göre haraket ediyoruz.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Editör Alt Yapısı</h3>
+                    <p>Kin kendine özel bir Code Editor (IDE) barındırır, bu ide otomatik kod tamamlama, syntax highlighting ve bir çoğu diğer özelliği barındırmaktadır.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="topluluk" class="community">
-        <h2>Topluluğumuza Göz Atın!</h2>
-        <p>Birlikte öğrenin, projeler oluşturun ve Kin'in geleceğini şekillendirin.</p>
-        <div class="community-actions">
-            <a href="#" class="btn-cta">Discord'a Katıl</a>
-            <a href="#" class="btn-link">Forumları Ziyaret Et &rarr;</a>
+    <section id="examples" class="section examples-section">
+        <div class="container">
+            <h2>Hangi Alanlarda Kullanılır?</h2>
+            <div class="use-case-cards">
+                <div class="card">
+                    <h3>2D Grafik Programlama</h3>
+                    <p>Kin grafik oluşturma içinde kullanılabilir! Kendi 2D tabanlı oyunlarınızı, arayüzlerinizi Kin ile kolay ve modern bir şekilde oluşturabilirsiniz.</p>
+                </div>
+                <div class="card">
+                    <h3>Networking Bileşenleri</h3>
+                    <p>Kin Socket ile Sunucunuz ve Client arasında bağlantı kurup aktarım sağlayabilirsiniz, kendi özel sohbet programlarınızı ve dahasını Kin ile hemen şimdi yapabilirsiniz!</p>
+                </div>
+                <div class="card">
+                    <h3>Hata Ayıklama</h3>
+                    <p>Kin'in geliştirme süreci henüz yeni başlamış olsa bile, Kin çoğu hatayı tespit etme konusunda iyi bir algoritmaya sahiptir, Kin size hangi satır'da hata yapmış olduğunuza dair uyarı mesajı verir.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer class="footer">
-        <p>&copy; 2025 Kin Programlama Dili. Güvenli. Hızlı. Modern.</p>
+        <div class="container footer-content">
+            <div class="logo">
+                <span class="logo-icon">K</span>
+                <span class="logo-text">Kin</span>
+            </div>
+            <div class="footer-links">
+                <a href="#">Hakkımızda</a>
+                <a href="#">Lisans</a>
+                <a href="#">Gizlilik</a>
+                <a href="#">İletişim</a>
+            </div>
+        </div>
     </footer>
 
 </body>
-
 </html>
